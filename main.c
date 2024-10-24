@@ -19,3 +19,44 @@ void simularRendimento(RendaFixa *investimentos, int total);
 void salvarSimulacoes(RendaFixa *investimentos, int total);
 void carregarSimulacoes(RendaFixa *investimentos, int *total);
 void gerarRelatorio(RendaFixa *investimentos, int total);
+
+int main() {
+    RendaFixa investimentos[MAX_INVESTIMENTOS];
+    int totalInvestimentos = 0;
+    int opcao;
+
+    carregarSimulacoes(investimentos, &totalInvestimentos);
+
+    do {
+        printf("\n--- Calculadora de Rendimento de Renda Fixa ---\n");
+        printf("1. Cadastrar produto de renda fixa\n");
+        printf("2. Simular rendimento\n");
+        printf("3. Salvar simulações\n");
+        printf("4. Gerar relatório\n");
+        printf("0. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                cadastrarInvestimento(investimentos, &totalInvestimentos);
+                break;
+            case 2:
+                simularRendimento(investimentos, totalInvestimentos);
+                break;
+            case 3:
+                salvarSimulacoes(investimentos, totalInvestimentos);
+                break;
+            case 4:
+                gerarRelatorio(investimentos, totalInvestimentos);
+                break;
+            case 0:
+                printf("Saindo...\n");
+                break;
+            default:
+                printf("Opção inválida!\n");
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
