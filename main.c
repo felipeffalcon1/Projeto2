@@ -79,3 +79,21 @@ void cadastrarInvestimento(RendaFixa *investimentos, int *total) {
 
     (*total)++;
 }
+
+//simula rendimento 
+void simularRendimento(RendaFixa *investimentos, int total) {
+    if (total == 0) {
+        printf("Nenhum investimento cadastrado.\n");
+        return;
+    }
+
+    printf("\n--- Simulação de Rendimento ---\n");
+    for (int i = 0; i < total; i++) {
+        float rendimento = investimentos[i].valor_inicial * pow(1 + (investimentos[i].taxa_juros / 100.0) / 12, investimentos[i].prazo);
+        printf("Produto: %s\n", investimentos[i].nome);
+        printf("Valor Inicial: %.2f\n", investimentos[i].valor_inicial);
+        printf("Valor Final (após %d meses): %.2f\n", investimentos[i].prazo, rendimento);
+        printf("Rendimento Total: %.2f\n", rendimento - investimentos[i].valor_inicial);
+        printf("-----------------------------------\n");
+    }
+}
