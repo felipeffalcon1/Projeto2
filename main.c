@@ -60,3 +60,22 @@ int main() {
 
     return 0;
 }
+
+// funcao cadastra novo produto de investimento 
+void cadastrarInvestimento(RendaFixa *investimentos, int *total) {
+    if (*total >= MAX_INVESTIMENTOS) {
+        printf("Limite de investimentos atingido.\n");
+        return;
+    }
+
+    printf("Nome do produto de renda fixa: ");
+    scanf("%s", investimentos[*total].nome);
+    printf("Valor inicial: ");
+    scanf("%f", &investimentos[*total].valor_inicial);
+    printf("Taxa de juros anual (em %%): ");
+    scanf("%f", &investimentos[*total].taxa_juros);
+    printf("Prazo (em meses): ");
+    scanf("%d", &investimentos[*total].prazo);
+
+    (*total)++;
+}
