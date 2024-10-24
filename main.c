@@ -124,3 +124,25 @@ void carregarSimulacoes(RendaFixa *investimentos, int *total) {
 
     printf("%d simulações carregadas com sucesso!\n", *total);
 }
+
+// funcao para salvar em arquivo de texto(txt)
+void gerarRelatorio(RendaFixa *investimentos, int total) {
+    FILE *file = fopen("relatorio_renda_fixa.txt", "w");
+    if (file == NULL) {
+        printf("Erro ao criar relatório.\n");
+        return;
+    }
+
+    fprintf(file, "--- Relatório de Simulações de Renda Fixa ---\n");
+    for (int i = 0; i < total; i++) {
+        float rendimento = investimentos[i].valor_inicial * pow(1 + (investimentos[i].taxa_juros / 100.0) / 12, investimentos[i].prazo);
+        fprintf(file, "Produto: %s\n", investimentos[i].nome);
+        fprintf(file, "Valor Inicial: %.2f\n", investimentos[i].valor_inicial);
+        fprintf(file, "Valor Final (após %d meses): %.2f\n", investimentos[i].prazo, rendimento);
+        fprintf(file, "Rendimento Total: %.2f\n", rendimento - investimentos[i].valor_inicial);
+        fprintf(file, "-----------------------------------\n");
+    }
+
+    fclose(file);
+    printf("Relatório gerado com sucesso!\n");
+}
