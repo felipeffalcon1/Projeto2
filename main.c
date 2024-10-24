@@ -97,3 +97,30 @@ void simularRendimento(RendaFixa *investimentos, int total) {
         printf("-----------------------------------\n");
     }
 }
+// funcao para salvar em arquivo binario 
+void salvarSimulacoes(RendaFixa *investimentos, int total) {
+    FILE *file = fopen("renda_fixa.bin", "wb");
+    if (file == NULL) {
+        printf("Erro ao abrir arquivo para salvar.\n");
+        return;
+    }
+
+    fwrite(investimentos, sizeof(RendaFixa), total, file);
+    fclose(file);
+
+    printf("Simulações salvas com sucesso!\n");
+}
+
+//funcao para simular no arquivo binario
+void carregarSimulacoes(RendaFixa *investimentos, int *total) {
+    FILE *file = fopen("renda_fixa.bin", "rb");
+    if (file == NULL) {
+        printf("Nenhum arquivo de simulações encontrado.\n");
+        return;
+    }
+
+    *total = fread(investimentos, sizeof(RendaFixa), MAX_INVESTIMENTOS, file);
+    fclose(file);
+
+    printf("%d simulações carregadas com sucesso!\n", *total);
+}
