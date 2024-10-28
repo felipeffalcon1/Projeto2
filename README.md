@@ -1,5 +1,9 @@
 # # README - Calculadora de Rendimento de Renda Fixa
 
+Leonardo Pera Chacon Guadagni RA: 24.124.022-5
+Pedro de Oliveira Schwank RA: 24.124.052-2
+Felipe Franco Falcon RA: 24.124.035-7
+
 ## Descrição do Projeto
 
 Este projeto é uma **Calculadora de Rendimento de Renda Fixa** que permite cadastrar produtos de investimento em renda fixa, simular seus rendimentos com base na taxa de juros anual e prazo, salvar e carregar as simulações em arquivos binários, além de gerar relatórios detalhados em arquivos de texto.
